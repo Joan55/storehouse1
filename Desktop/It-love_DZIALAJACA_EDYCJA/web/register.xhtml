@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions">
+    <h:head>
+        <title>#{text.register_title}</title>
+    </h:head>
+    <h:body>
+        <h1>#{text.register_title}</h1>
+        <h:form>
+             <h:inputHidden value="#{registration.client.id}"/>
+            <h:panelGrid columns="3">
+                #{text.client_firstName}
+                <h:inputText id="firstName" value="#{registration.client.firstName}" required="true">
+                    <f:validateRegex pattern="[A-Za-z]{2,}"/>
+                </h:inputText>
+                <h:message for="firstName"/>
+
+                #{text.client_lastName}
+                <h:inputText id="lastName" value="#{registration.client.lastName}" required="true"/>
+                <h:message for="lastName"/>
+
+                #{text.client_dob} (#{fn:toLowerCase(dictionary.datePattern)})
+                <h:inputText id="dob" value="#{registration.client.dateOfBirth}" required="true">
+                    <f:convertDateTime pattern="#{dictionary.datePattern}"/>
+                </h:inputText>
+                <h:message for="dob"/>
+                
+                #{text.client_sex}
+                <h:selectOneMenu id="sex" value="#{registration.client.sex}">
+                    <f:selectItem itemLabel="#{text.client_sex_FEMALE}" itemValue="FEMALE"/>
+                    <f:selectItem itemLabel="#{text.client_sex_MALE}" itemValue="MALE"/>
+                    <f:selectItem itemLabel="#{text.client_sex_OTHER}" itemValue="OTHER"/>
+                </h:selectOneMenu>
+                <h:message for="sex"/>
+                
+                #{text.client_parent}
+                <h:selectOneRadio id="parent" value="#{registration.client.parent}">
+                    <f:selectItem itemLabel="#{text.yes}" itemValue="true"/>
+                    <f:selectItem itemLabel="#{text.no}" itemValue="false"/>
+                </h:selectOneRadio>
+            </h:panelGrid>
+            <h:commandButton value="#{text.button_send}" action="#{registration.save}"/>
+        </h:form>
+    </h:body>
+</html>
+
