@@ -22,11 +22,11 @@
             </select><p>
                 Filtruj po:
             <table>
-                <tr><th>nazwa</th><th>wiek</th><th>kategoria</th></tr>
+                <tr><th>nazwa</th><th>cena</th><th>kategoria</th></tr>
                 <tr>
                     <td><input type="text" name="byName" value="${param.byName}"></td>
-                    <td><input type="text" name="byPriceMin" value="${param.byPriceMin}">
-                        <input type="text" name="byPriceMax" value="${param.byPriceMax}"></td>
+                    <td>od<input type="text" name="byPriceMin" value="${param.byPriceMin}">zł
+                        do<input type="text" name="byPriceMax" value="${param.byPriceMax}">zł</td>
                     <td><select name="byCategory">
                             <option></option>
                             <option value="BEEF" ${param.byCategory eq 'BEEF'?"selected":""}>wołowina</option>

@@ -19,6 +19,7 @@
                     <td><a href= storehouseForm.jsp>Wprowadzanie produktu na magazyn</a></td></tr>
                 <tr><td><a href= "manageProducts">Zarządzanie towarami w magazynie</a></td>
                 </tr>
+            </table>
         </center>
     </body>
 </html>

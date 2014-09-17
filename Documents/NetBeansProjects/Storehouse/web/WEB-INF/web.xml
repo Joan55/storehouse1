@@ -52,4 +52,12 @@
         <exception-type>java.lang.NumberFormatException</exception-type>
         <location>/errorValue.html</location>
     </error-page>
+    <jsp-config>
+     <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+            <include-prelude>/headline.html</include-prelude>
+            <include-coda>/footer.html</include-coda>
+        </jsp-property-group>
+    </jsp-config>
 </web-app>
