@@ -19,6 +19,16 @@ header {
     text-align: center;
     color: darkred;
 }
+#error{
+    height: 80px;
+    background-image: url("image.jpg");
+    background-repeat: no-repeat;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    color: darkred;
+}
 #controller{
     font-size: 12;
 }

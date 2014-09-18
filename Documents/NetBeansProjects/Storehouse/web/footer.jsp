@@ -13,7 +13,7 @@
     </head>
     <body>
 	<footer>
-		Copyright &copy; 2014, 	SKłAD KIEŁBASIANY "BLIŻEJ PIĘKNA"
+		Copyright &copy; 2014, 	SKłAD KIEŁBASIANY "DELICATESSEN"
       </footer>
     </body>
 </html>
