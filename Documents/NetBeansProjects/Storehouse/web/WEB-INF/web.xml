@@ -57,7 +57,7 @@
         <location>/errorSQL.html</location>
     </error-page>
     <error-page>
-        <exception-type>java.lang.NumberFormatException</exception-type>
+        <exception-type>java.lang.NumberF2ormatException</exception-type>
         <location>/errorValue.html</location>
     </error-page>
     <jsp-config>

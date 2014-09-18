@@ -26,11 +26,8 @@ public class UpdateProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
             Product product = (Product) req.getAttribute("product");
             dao.updateProduct(product);
-        } catch (java.lang.NumberFormatException e) {
-            this.getServletContext().log("ta wartość jest niepoprawna", e);}
             resp.sendRedirect(req.getContextPath() + "/manageProducts");
         }
 
