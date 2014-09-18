@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>${text.manager_management}</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <h1>#{text.manager_management}</h1>
+        <h:form>
+
+            <h:panelGrid id="filterPanel" columns="6">
+
+                #{text.sort}
+                <h:selectOneMenu value="#{manager.order}">
+                    <f:ajax render="table" event="change"/>
+                    <f:selectItem itemValue="name" itemLabel="#{text.product_name}"/>
+                    <f:selectItem itemValue="price" itemLabel="#{text.product_price}"/>
+                    <f:selectItem itemValue="category" itemLabel="#{text.product_category}"/>
+                </h:selectOneMenu>
+
+                <f:ajax render="filterValue" event="change" execute="@form">
+                    <h:selectOneMenu id="filterType" value="#{manager.filterType}"> 
+                        <f:selectItem itemValue="NAME" itemLabel="#{text.product_name}"/>
+                        <f:selectItem itemValue="PRICE" itemLabel="#{text.product_price_filter}"/>
+                        <f:selectItem itemValue="CATEGORY" itemLabel="#{text.product_category}"/>
+                    </h:selectOneMenu>
+
+                    <h:panelGroup id="filterValue">
+                        <h:panelGroup>
+                            <h:inputText id="filterValueInput" value="#{manager.filterValue}" rendered="#{manager.filterType == 'NAME'
+                                                                        or manager.filterType == 'PRICE'}"
+                                         required="#{manager.filterType == 'PRICE'}"/>
+                            <h:message for="filterValueInput"/>
+
+                        </h:panelGroup>
+                        <h:selectOneMenu id="productForm" value="#{manager.filterValue}" rendered="#{manager.filterType == 'CATEGORY'}">
+                            <f:selectItem itemLabel="#{text.product_cat_BEEF}" itemValue="wołowina"/>
+                            <f:selectItem itemLabel="#{text.product_cat_PORK}" itemValue="wieprzowina"/>
+                            <f:selectItem itemLabel="#{text.product_cat_POULTRY}" itemValue="drób"/>
+                            <f:selectItem itemLabel="#{text.product_cat_MUTTON}" itemValue="baranina"/>
+                            <f:selectItem itemLabel="#{text.product_cat_GAME}" itemValue="dziczyzna"/>
+                            <f:selectItem itemLabel="#{text.product_cat_MIX}" itemValue="mieszane"/>
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+
+                </f:ajax>
+
+                <h:commandButton action="#{manager.filter}" value="#{text.button_refresh}"/>
+                <h:commandButton action="#{manager.reset}" value="#{text.button_reset}"/>
+            </h:panelGrid>
+
+            <h:dataTable id="table" value="#{manager.products}" var="product" binding="#{table}">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{text.manager_index}" />
+                    </f:facet>
+                    <h:outputText value="#{table.rowIndex + 1}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{text.product_name}" />
+                    </f:facet>
+                    <h:outputText value="#{product.name}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{text.product_description}" />
+                    </f:facet>
+                    <h:outputText value="#{product.description}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{text.product_price}" />
+                    </f:facet>
+                    <h:outputText value="#{product.price} zł" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{text.product_quantity}" />
+                    </f:facet>
+                    <h:outputText value="#{product.quantity}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{text.product_category}" />
+                    </f:facet>
+                    <h:outputText value="#{product.category}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{text.manager_manage}" />
+                    </f:facet>
+                    <h:commandLink value="#{text.manager_remove}" action="#{manager.remove(product.id)}"/>&nbsp;
+                    <h:commandLink value="#{text.manager_edit}" action="#{manager.edit(product)}"/>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="#{text.manager_comeback}" action="#{manager.comeBack}"/>
+        </h:form>
+    </h:body>
+</html>
+

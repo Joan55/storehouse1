@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{text.edit_title}</title>
+      <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+        <h1>#{text.edit_title}</h1>
+        <h:form>
+            <h:inputHidden value="#{manager.editProduct.id}"/>
+            <h:panelGrid columns="3">
+                ${text.product_name}
+                <h:inputText id="name" value="#{manager.editProduct.name}" required="true">
+                    <!--                    <f:validateRegex pattern="[A-Za-z]{2,}"/>-->
+                </h:inputText>
+                <h:message for="name"/>
+
+                #{text.product_description}
+                <h:inputText id="description" value="#{manager.editProduct.description}" required="true"/>
+                <h:message for="description"/>
+
+                #{text.product_price}
+                <h:inputText id="price" value="#{manager.editProduct.price}" required="true"/>
+                <h:message for="price"/>
+
+                #{text.product_quantity}
+                <h:inputText id="quantity" value="#{manager.editProduct.quantity}" required="true"/>
+                <h:message for="quantity"/>
+
+                #{text.product_category}
+                <h:selectOneMenu id="category" value="#{manager.editProduct.category}">
+                    <f:selectItem itemLabel="#{text.product_cat_BEEF}" itemValue="wołowina"/>
+                    <f:selectItem itemLabel="#{text.product_cat_PORK}" itemValue="wieprzowina"/>
+                    <f:selectItem itemLabel="#{text.product_cat_POULTRY}" itemValue="drób"/>
+                    <f:selectItem itemLabel="#{text.product_cat_MUTTON}" itemValue="baranina"/>
+                    <f:selectItem itemLabel="#{text.product_cat_GAME}" itemValue="dziczyzna"/>
+                    <f:selectItem itemLabel="#{text.product_cat_MIX}" itemValue="mieszane"/>
+                </h:selectOneMenu>
+                <h:message for="category"/>
+            </h:panelGrid>
+            <h:commandButton value="#{text.edit_button}" action="#{manager.update}"/><h:commandButton immediate="true" value="#{text.manager_comeback}" action="#{manager.comeBack}"/>
+        </h:form>
+        <h:form></h:form>
+    </h:body>
+</html>
+
