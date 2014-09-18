@@ -13,8 +13,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <center><h1>MENU GŁÓWNE</h1>
-            <table>
+    <header><h1>MENU GŁÓWNE</h1></header>
+    <center>        <table id="controller">
                 <tr>
                     <td><a href= storehouseForm.jsp>Wprowadzanie produktu na magazyn</a></td></tr>
                 <tr><td><a href= "manageProducts">Zarządzanie towarami w magazynie</a></td>

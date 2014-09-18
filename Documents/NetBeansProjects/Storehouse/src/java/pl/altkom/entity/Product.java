@@ -19,13 +19,13 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     @Column(name = "nazwa")
     private String name;
     @Column(name = "miesnosc")
     private String description;
     @Column(name = "cena")
-    private Long price;
+    private double price;
     @Column(name= "kategoria")
     private String category;
     @Column(name = "ilosc")
@@ -55,11 +55,11 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public Long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -71,11 +71,11 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
